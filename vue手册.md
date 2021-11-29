@@ -1,0 +1,108 @@
+#vue手册
+1. Vue实例
+	- el：挂载节点（htmlelement）
+	- data：接受对象或者属性
+		- （v）.$set：给实例添加响应是数据
+	- methods：接受方法
+	- computed：依赖缓存，提升性能
+		- 每一个计算属性都包含一个 getter 和一个 setter方法
+	- watch：需要被侦听的属性名作为 watch 对象的键，以一个函数 function 作为该键的值。函数 function 接收两个参数：侦听数据变化之后的值newValue；侦听数据变化之前的值oldValue：
+		- handler（）：我们写的 watch 方法其实默认写的就是这个handler。当 name 发生改变时, handler 方法就会执行
+		- immediate属性：当设置为 true 时，页面第一次渲染的时候就会触发侦听器的函数。
+		- deep属性：当设置为 true 时，会对对象里面的每个属性进行侦听。
+	- componemts：局部注册组件，
+
+
+
+2. vue指令
+	- v-text：数据绑定，相当于{{}}
+	- v-html：同v-text，相当于innerHTML
+	- v-bind：给元素属性赋值，简写（：属性名）
+	- v-for：列表循环渲染，基本语法：v-for="item in data"，data 可以是数组或者对象
+	- v-if：生成或移除element
+	- v-show：显示或隐藏element
+	- v-else、v-else-if：同v-if
+	- v-on：给element绑定事件，基本语法：v-on:事件名="方法"，简写（@事件类型）
+	- v-model：数据双向绑定
+	- v-pre：跳过所在元素及其子元素的编译过程，当成静态节点处理
+	- v-once：模板只会在第一次更新时显示数据，此后再次更新该 DOM 里面引用的数据时，内容不会自动更新。
+3. vue专业名词
+	- vue动态样式绑定
+		- 通过v-bind绑定元素class
+			- 数组和对象两种形式，对象的布尔值是否添加，数组用三元表达式是否添加，还可以混杂
+		- 通过v-bind绑定内联样式
+			- 通过对象绑定，同多数组可将对象绑定
+	- vue计算属性
+		- vue实例中的computed
+	- vue监听器
+		- vue实例中的watch
+	- vue事件处理
+		- 通过特殊参数$event获取原生DOM事件
+		- 事件修饰符
+			- .stop: 阻止单击事件继续传播；
+			- .prevent: 只有修饰符，提交事件不再重载页面；
+			- .capture: 添加事件监听器时使用事件捕获模式，即元素自身触发的事件先在自身处理，然后交由内部元素进行处理；
+			- .self: 只有在event.target是当前元素自身时触发处理函数，即事件不是从内部元素触发的
+			- .once: 点击事件将只触发一次;
+			- .passive: 滚动事件会立即触发，不会等待其他串联事件。即prevent会失效。
+		- 按键修饰符
+			- .enter: 回车键
+			- .tab: TAB键
+			- .delete: 删除和退格键
+			- .esc: 只有在event.终止键
+			- .space: 删除键
+			- .up: 上方向键
+			- .down: 下方向键
+			- .left: 左方向键
+			- .right: 右方向键
+		- 系统修饰符
+			- .ctrl
+			- .alt
+			- .shift
+			- .meta
+	- Vue过渡&动画
+		- 使用 transition 组件包裹需要使用过渡效果的 DOM 元素
+			- v-enter：定义进入过渡的开始状态
+			- v-enter-active：定义进入过度生效时的状态
+			- v-enter-to：定义进入过渡的结束状态
+			- v-leave：定义离开过渡的开始状态
+			- v-leave-active：定义离开过渡生效的状态
+			- v-leave-to：定义离开过渡的结束状态
+		- 使用css动画配合transition实现动画
+		- 使用 transition 钩子函数操作元素 DOM 来实现动画
+		- 使用 transition 的 appear 属性实现初次渲染的动画效果
+	- Vue数据双向绑定
+		- 使用 v-model 对 input、textarea、select 等表单项进行数据绑定
+		- 使用 v-bind:value 给表单项的值进行绑定
+		- v-model 修饰符的使用
+			- lazy：添加 lazy 修饰符，从而转变为使用 change 事件进行同步
+			- number：自动将用户的输入值转为数值类型
+			- trim：自动过滤用户输入的首尾空白字符
+  - Vue实例生命周期
+  	 - beforeCreate创建前
+  	 - created创建后
+  	 - beforeMount载入前
+  	 - mounted载入后
+  	 - beforeUpdate更新前
+  	 - updated更新后
+  	 - beforeDestroy销毁前
+  	 - destoryed销毁后
+  - Vue组件基础
+  	 - 全局组件注册
+  	 		- Vue.component
+  	 - 局部组件注册
+  	 		- componemts
+  	 		- 一个组件的 data 选项必须是一个函数
+  - Vue插槽
+  	 - 通过标签使用默认插槽
+  	 - 通过给标签 添加一个 name 的 attribute 来命名插槽；
+  	 - 通过作用域插槽 v-slot 让父组件可以访问到子组件中的数据。
+  - Vue组件间通信
+  	 - 父组件通过 props 向子组件传递参数进行数据通信
+  	 - 子组件通过 $emit 向父组件传递事件进行数据通信
+	 - 兄弟组件通过共同父组件进行数据通信
+   	 - 通过使用一个空的 Vue 实例作为中央事件总线进行非关系层组件的数据通信
+  - Vue动态组件&keep-alive
+  	- 
+		
+		

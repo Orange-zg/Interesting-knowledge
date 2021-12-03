@@ -15,3 +15,7 @@
      * V8引擎对Node.js(和Chrome V8)中的内存限制大小。
      * 代码分析：内存泄漏出现情况(重要)
      * Nodejs内存 - 扩大容量
+* 为什么flex布局中text-overflow:ellipsis失效
+  *问题根源：一个flex item元素的原始大小是如何确定的？优先级为flex-basis > width > 内容宽度，但min-width 和 max-width会限制住原始大小。当min-width为默认时，宽度为被内容撑开时，省略号会被隐藏。
+  * 问题解决
+     * 设置min-width：0即可  

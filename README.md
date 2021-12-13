@@ -19,3 +19,16 @@
   *问题根源：一个flex item元素的原始大小是如何确定的？优先级为flex-basis > width > 内容宽度，但min-width 和 max-width会限制住原始大小。当min-width为默认时，宽度为被内容撑开时，省略号会被隐藏。
   * 问题解决
      * 设置min-width：0即可  
+* 在函数中，在foreach中，为啥使用return 无法结束函数
+  * 原理：
+     * forEach的实现方式用代码表示出来可以写成如下的结构
+     * const arr = [1, 2, 3, 4, 5];
+for (let i = 0; i < arr.length; i++) {
+  const rs = (function(item) {
+    console.log(item);
+    if (item > 2) return false;
+  })(arr[i])
+}
+     * 使用return语句相当于在每个自执行函数中将返回值复制给rs，但是实际对整个函数并没有影响。而使用break语句报错是因为再JS的解释器中break语句是不可以出现在函数体内的。
+  * 解决方案：加个局部变量，判断状态然后再操作
+     
